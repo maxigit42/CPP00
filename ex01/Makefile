@@ -8,7 +8,7 @@ SRC			= main.cpp PhoneBook.cpp Contact.cpp
 OBJ			= $(SRC:.cpp=.o)
 
 # Compilador (OBLIGATORIO c++, no g++)
-CC			= c++
+CXX			= c++
 
 # Banderas (Flags) OBLIGATORIAS
 # -pedantic es opcional pero recomendada para asegurar C++98 estricto
@@ -22,11 +22,11 @@ RM			= rm -f
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 # Regla implícita para compilar .cpp a .o individualmente
 %.o: %.cpp
-	$(CC) $(CPPFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)

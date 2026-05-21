@@ -18,7 +18,7 @@ void PhoneBook::add(){
 
     while(true){
         std::cout << "First Name: ";
-        if(!std::getline(std::cin, input)) return; //Maneja Ctrl+D
+        if(!std::getline(std::cin, input)) return; 
         if(!input.empty()) break;
         std::cout << "Field can't be empty!" << std::endl;
     }
@@ -26,7 +26,7 @@ void PhoneBook::add(){
 
     while(true){
         std::cout << "Last Name: ";
-        if(!std::getline(std::cin, input)) return; //Maneja Ctrl+D
+        if(!std::getline(std::cin, input)) return;
         if(!input.empty()) break;
         std::cout << "Field can't be empty!" << std::endl;
     }
@@ -34,7 +34,7 @@ void PhoneBook::add(){
 
     while(true){
         std::cout << "Nickname: ";
-        if(!std::getline(std::cin, input)) return; //Maneja Ctrl+D
+        if(!std::getline(std::cin, input)) return; 
         if(!input.empty()) break;
         std::cout << "Field can't be empty!" << std::endl;
     }
@@ -42,7 +42,7 @@ void PhoneBook::add(){
 
     while(true){
         std::cout << "Phone Number: ";
-        if(!std::getline(std::cin, input)) return; //Maneja Ctrl+D
+        if(!std::getline(std::cin, input)) return; 
         if(!input.empty()) break;
         std::cout << "Field can't be empty!" << std::endl;
     }
@@ -50,7 +50,7 @@ void PhoneBook::add(){
     
     while(true){
         std::cout << "Darkest Secret: ";
-        if(!std::getline(std::cin, input)) return; //Maneja Ctrl+D
+        if(!std::getline(std::cin, input)) return;
         if(!input.empty()) break;
         std::cout << "Field can't be empty!" << std::endl;
     }
@@ -70,10 +70,8 @@ void PhoneBook::search() {
         if (this->_contacts[i].getFirstName().empty()) 
             continue;
 
-        // Imprimir columna Índice
         std::cout << "|" << std::setw(10) << i << "|";
         
-        // Imprimir columna Nombre (con lógica de corte)
         std::string str = this->_contacts[i].getFirstName();
         if (str.length() > 10)
             str = str.substr(0, 9) + ".";
@@ -98,20 +96,15 @@ void PhoneBook::search() {
     std::cout << "Enter index to view details: ";
     if (!std::getline(std::cin, index_str)) return; // Ctrl+D
 
-    // Validar que escribió un número
-    // atoi convierte string a int. (Requiere <cstdlib>)
     // Verificamos que no esté vacío y que sea un solo dígito
     if (index_str.empty() || index_str.length() > 1 || !isdigit(index_str[0])) {
         std::cout << "Invalid index!" << std::endl;
         return;
     }
 
-    int index = index_str[0] - '0'; // Truco char a int simple
-    // O podrías usar std::atoi(index_str.c_str());
+    int index = index_str[0] - '0'; 
 
-    // Validar rango (0 a 7) y que el contacto exista
     if (index >= 0 && index < 8 && !this->_contacts[index].getFirstName().empty()) {
-        // MOSTRAR DETALLES
         std::cout << "First Name: " << this->_contacts[index].getFirstName() << std::endl;
         std::cout << "Last Name: " << this->_contacts[index].getLastName() << std::endl;
         std::cout << "Nickname: " << this->_contacts[index].getNickname() << std::endl;
